@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>(of the world)</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+ 
+
+
+<style type="text/css">
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: serif;
+}
+
+div {
+  box-sizing: border-box;
+  float: left;
+  word-wrap: break-word;
+  word-break: break-all;
+  line-height: 0.9em;
+  font-size: 10em;
+}
+
+.cell {
+  border: 2px solid rgba(35, 36, 59);
+  /*color: rgba(63, 64, 86); IG friendly version*/
+  /* color: rgba(17, 18, 32); */
+  color: rgba(35, 36, 59);
+  background-color: black;
+  padding-left: 1px;
+  padding-top: 1px;
+} 
+
+.cell:hover{
+  color: black;
+  cursor: pointer;
+}
+
+.cell:hover:before{
+  content: "(of the world)";
+  /* color: rgba(17, 18, 32); */
+  color: rgba(35, 36, 59);
+  font-size: 0.1em;
+  padding-left: 1em;
+}
+
+@media screen and (max-width: 400px){
+  .cell {
+    color: rgb(24, 25, 44);
+    border: 1px solid rgb(24, 25, 44);
+  }
+
+
+}
+
+</style>
+
+</head>
+
+
+	
+<body>
+	
+
+</body>
+
+
+<script type = "text/javascript">
+
+var w;
+var h;
+var count = 0;
+
+var str = "My father was wrong about what was necessary to combat the antiblackness of the state. It is hard to form a formiddable analysis against the state when you are traumatized and won't acknowledge it. Learning to be a father from losing a father who himself never had the chance to lose his own father before he was lost. That is a riddle of fathers. A history riddled with fathers. A history field in negatives. Maintaining the centers of their lives, were of course, women. My grandmother has been much more steady sifiting (living) the tidal weight of time, of history. There is no word you will hear me say more often than the word history.It does not have us in its clutches but it does have us. A large part of it is made of brutalization, a large part of it is an abusive interpretation of time, a blatant denial of the fact that we are all connected, and of the range of our limited agencies afainst its being reread to violent ends. We do not choose to go back to it. We see it though don't face [preposition] it. As its constituents, ultimately it answers to us. It is also our fiber, our cell, and our cells. Cell in the Medieval Latin sense of 'small.monastery, subordinate monastery' in that history is a network, is provincial, and reflects the smallness of our experience, and also (creates) the bigness of our interiors, as reflected in space that faith carves for whatever one might pray to, for, the direct relationship between want and belief that through articulation (accumulation) we might reach that want. Time is an incomplete bridge, is a column between two sides of a chasm, is between on all sides a certain emptiness of experience, empty as glass can be empty of light, empty as in inherent with something not transparent or opaque but reflective. I appreciate that in the scientific sense cells are abundant and collective. Captivity too is abundant. We are tracked more than we are seen, are falsely accused of being/as being harmful to one another, are being cordoned off, taken. Rather than 'end' the poem I would like to use acknowledgements to 'open' it. Not to open as in I opened the box of cereal but open as in open towards, to orient it, importantly, to the future (which is a different sense of the past). The past can be the future because the past is constituted by our relation to it. The past is capable of change. The previous stanzas are indebted to the work of Kevin Quashie, his book The Sovereignty of the Interior, and to the ongoing work of the LAPD Spying coaliation, who point out, interrogate, and act against the use of surveillance technologies that expand, or have the potential to expand, police powers. We should consider the indebtedness of the tide. See physics as one of many small catalogs of (R)elation (this usage of the word 'relation' is indebted to my friend Ariel). So this iteration of the poem is over (see: open";
+var words = str.split(" ");
+
+
+$(document).ready(function (){
+
+  w = $(window).width();
+  h = $(window).height();
+  
+  var container = $("<div>");
+  container.css({
+    height: '100vh',
+    width: '100vw',
+  });
+  
+  container.css("font-size", w/4);
+
+
+  container.addClass("cell");
+  $("body").append(container);
+  container.append(words[count++]);
+
+   
+
+  $("div").on("click", function(event){
+    
+    var text = $(event.target)
+        .contents(function textNode (){
+            return this.NodeType===3;
+      })
+        
+      var div = $("<div>");
+      var div_2 = $("<div>");
+      
+      
+
+      div.append(text);
+      div_2.append(words[count++]);
+ 
+    
+// Parse window width and height into integers
+      var parentw = parseInt($(event.target).css("width"), 10);
+      var parenth = parseInt($(event.target).css("height"), 10);
+
+// if width is greater than height, change width to 1/2 of height    
+      if(parentw > parenth){
+        div.css({
+          height: '100%',
+          width: '50%'
+        });
+        div_2.css({
+          height: '100%',
+          width: '50%'
+        });
+
+        
+// if height is greater than width, change height to 1/2 of width        
+      } else {
+        div.css({
+          height: '50%',
+          width: '100%'
+        });
+        div_2.css({
+          height: '50%',
+          width: '100%'
+        });
+      }
+        
+
+      div.css("font-size", parenth/4);
+      div_2.css("font-size", parenth/4);
+
+
+      div.addClass("cell");
+      div_2.addClass("cell");
+
+      $(event.target).append(div);
+      $(event.target).append(div_2);
+      $(event.target).removeClass("cell");
+  
+      event.stopPropagation();
+
+});
+
+});
+
+// $(window).resize(function(){
+//   w = $(window).width();
+//   h = $(window).height();
+// });
+
+
+</script>
+</html>
